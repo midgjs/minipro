@@ -59,7 +59,7 @@ public class PhonebookApp {
 			sc.nextLine();
 			
 			if(menu == 5) {
-				//프로그램 종료 -> 종료시 text저장
+				//프로그램 종료 
 				System.out.println("*******************************************");
 				System.out.println("*	               감사합니다         *");
 				System.out.println("*******************************************");
@@ -85,6 +85,18 @@ public class PhonebookApp {
 				Person p = new Person(name, hp, company);
 				pList.add(p);
 				
+				//쓰기 스트림 
+				Writer fw = new FileWriter("./phoneDB.txt");
+				BufferedWriter bw = new BufferedWriter(fw);
+				
+				for(Person person : pList) {
+					String saveStr = person.getName() + "," + person.getHp() + "," + person.getCompany();
+					
+					
+					bw.write(saveStr);
+					bw.newLine();
+				}
+				bw.close();
 			} else if(menu == 3) {
 				//삭제
 				System.out.println("<3.삭제>");
@@ -92,8 +104,26 @@ public class PhonebookApp {
 				int num = sc.nextInt();
 				pList.remove(num-1);
 				System.out.println("[삭제되었습니다.]");
+				
+				//쓰기 스트림 
+				Writer fw = new FileWriter("./phoneDB.txt");
+				BufferedWriter bw = new BufferedWriter(fw);
+				
+				for(Person person : pList) {
+					String saveStr = person.getName() + "," + person.getHp() + "," + person.getCompany();
+					
+					
+					bw.write(saveStr);
+					bw.newLine();
+				}
+				bw.close();
 			} else if(menu == 4) {
-				//미구현 (검색창)
+				//검색기능
+				System.out.println("<4.검색>");
+				System.out.println(">이름: ");
+				sc.nextLine();
+				String search = sc.nextLine();
+				
 			} else {
 				//메뉴에 없는 번호입력
 				System.out.println("[다시 입력해 주세요.]");
@@ -102,21 +132,6 @@ public class PhonebookApp {
 		}
 		
 		
-		//쓰기 스트림
-		Writer fw = new FileWriter("./phoneDB.txt");
-		BufferedWriter bw = new BufferedWriter(fw);
-		
-		for(Person person : pList) {
-			String saveStr = person.getName() + "," + person.getHp() + "," + person.getCompany();
-			
-			
-			bw.write(saveStr);
-			bw.newLine();
-		}
-		
-		
-		
-		bw.close();
 		br.close();
 		sc.close();
 	}
