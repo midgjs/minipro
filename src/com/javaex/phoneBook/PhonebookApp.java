@@ -59,6 +59,7 @@ public class PhonebookApp {
 			sc.nextLine();
 			
 			if(menu == 5) {
+				//프로그램 종료 -> 종료시 text저장
 				System.out.println("*******************************************");
 				System.out.println("*	               감사합니다         *");
 				System.out.println("*******************************************");
@@ -85,6 +86,7 @@ public class PhonebookApp {
 				pList.add(p);
 				
 			} else if(menu == 3) {
+				//삭제
 				System.out.println("<3.삭제>");
 				System.out.print(">번호 : ");
 				int num = sc.nextInt();
@@ -93,6 +95,7 @@ public class PhonebookApp {
 			} else if(menu == 4) {
 				//미구현 (검색창)
 			} else {
+				//메뉴에 없는 번호입력
 				System.out.println("[다시 입력해 주세요.]");
 			}
 			
