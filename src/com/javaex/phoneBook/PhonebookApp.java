@@ -120,10 +120,20 @@ public class PhonebookApp {
 			} else if(menu == 4) {
 				//검색기능
 				System.out.println("<4.검색>");
-				System.out.println(">이름: ");
-				sc.nextLine();
-				String search = sc.nextLine();
-				
+				System.out.print(">이름: ");
+				String keyword = sc.nextLine();
+
+				for (int i = 0; i < pList.size(); i++) {
+					String serchName = pList.get(i).getName();
+					if (serchName.contains(keyword)) {
+						System.out.print(i + 1 + ".   ");
+						System.out.print(pList.get(i).getName() + "\t");
+						System.out.print(pList.get(i).getHp() + "\t");
+						System.out.print(pList.get(i).getCompany() + "\t");
+						System.out.println("");
+					}
+				}
+				continue;
 			} else {
 				//메뉴에 없는 번호입력
 				System.out.println("[다시 입력해 주세요.]");
